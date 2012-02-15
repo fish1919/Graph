@@ -15,5 +15,22 @@ namespace Graph
         {
             InitializeComponent();
         }
+
+        private void btnCreate_Click(object sender, EventArgs e)
+        {
+            AdjacencyList a = new AdjacencyList();
+            //添加顶点
+            a.AddVertex("A");
+            a.AddVertex("B");
+            a.AddVertex("C");
+            a.AddVertex("D");
+            //添加边
+            a.AddEdge("A", "B");
+            a.AddEdge("A", "C");
+            a.AddEdge("A", "D");
+            a.AddEdge("B", "D");
+
+            rtbList.AppendText(a.ToString());
+        }
     }
 }

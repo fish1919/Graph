@@ -10,5 +10,6 @@ namespace Graph
 {
     class GraphTop
     {
+        //AdjacencyList 
     }
 }

@@ -19,7 +19,7 @@ namespace Graph
     }
 
     //表示存放于数组中的表头结点
-    class Vertex
+    public class Vertex
     {
         public string data; //数据
         public Node firstEdge; //邻接点链表头指针
