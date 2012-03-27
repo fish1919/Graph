@@ -9,6 +9,7 @@ namespace Graph
     //创建图的邻接表
     public class AdjacencyList
     {
+        public StringBuilder dfsPath;
         List<Vertex> items; //图的顶点集合
         public AdjacencyList() : this(10) { } //构造方法
         public AdjacencyList(int capacity) //指定容量的构造方法
@@ -114,5 +115,45 @@ namespace Graph
              }
              return s;
          }
+
+         public void DFSTraverse() //深度优先搜索
+         {
+             InitVisited(); //将visited标志全部置为false
+             dfsPath = new StringBuilder();
+             foreach (Vertex v in items)
+             {
+                 if (!v.visited) //如果未被访问
+                 {
+                     DFS(v); //深度优先遍历
+                 }
+             }
+
+         }
+
+         private void DFS(Vertex v)
+         {
+             v.visited = true; //将访问标志设为true
+             //Console.Write(v.data + " "); //访问
+             dfsPath.Append(v.data + " ");
+             Node node = v.firstEdge;
+             while (node != null) //访问此顶点的所有邻接点
+             {
+                 //如果邻接点未被访问，则递归访问它的边
+                 if (!node.adjvex.visited)
+                 {
+                     DFS(node.adjvex); //递归
+                 }
+                 node = node.next; //访问下一个邻接点
+             }
+         }
+
+         private void InitVisited()
+         {
+             foreach (Vertex v in items)
+             {
+                 v.visited = false; //全部置为false
+             }
+         }
+        
     }
 }
